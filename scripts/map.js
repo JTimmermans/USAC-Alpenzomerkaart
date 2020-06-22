@@ -89,8 +89,8 @@ function initMap() {
       let markers = [];
       for (var i = 0; i < data.feed.entry.length; i++) {
         let value = data.feed.entry[i];
-        //var keys = Object.keys(value)
-        //window.alert(keys)
+        var keys = Object.keys(value)
+        window.alert(keys)
         markers.push(addMarker(value));
         if (i === data.feed.entry.length - 1) {
           let lat = parseFloat(value.gsx$latitude.$t);
