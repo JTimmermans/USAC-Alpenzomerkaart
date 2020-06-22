@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>USAC alpenzomerkaart</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <!-- STEP 6. REMOVE THE LINE BELOW, ADD YOUR API KEY TO THE FOLLOWING LINE AND REMOVE THE COMMENT SYMBOLS-->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC-0mHUPNYzrNiCPj31GITBhAEQzDmk54o&libraries=places"></script>
+</head>
+
+<body onload="initMap()">
+  <div class="wrapper">
+    <div class="header">
+      <div id="logo"></div>
+    </div>
+    <div class="sidebar">
+      <script type="text/javascript">let submitted = false;</script>
+      <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {window.location.reload(true);}"></iframe>
+      <p>
+        Vul hieronder de naam of namen van je reisgezelschap en locatie in, herhaal dit voor alles verschillende campings/locaties.
+     </p>
+      <h2>Voeg een vakantie toe.</h2>
+      <form id="bookForm" method="post" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSfoEegTuyIXj_YKNR0eMZPr-cG5UvkvauG5oARPgcsLQYOZAA/formResponse" 
+        target="hidden_iframe" onsubmit="submitted=true;">
+        <div class="book-input">
+          <label for="yourname" aria-describedby="yourname_desc">Namen</label>
+          <div class="form-tip" id="yourname_desc">Vul hier de namen van je reisgezelschap in</div>
+          <input id="yourname" aria-label="Your Name" aria-describedby="yourname_desc" name="entry.1674117798" >
+        </div>
+
+        <div class="book-input">
+          <label for="booktitle">Periode<span class="required"> *</span></label>
+          <input required id="booktitle" aria-label="Book Title" name="entry.2092300636" required>
+        </div>
+
+        <div class="book-input">
+          <label for="location" aria-describedby="location_desc">Location<span class="required"> *</span></label>
+          <div class="form-tip" id="location_desc">Vul een locatie of camping in.</div>
+          <input id="location" type="text" aria-label="Location" aria-describedby="location_desc" name="entry.2112028069" required>
+        </div>
+
+        <div class="book-input">
+          <input id="latitude" name="entry.677756540" type="hidden">
+        </div>
+        <div class="book-input">
+          <input id="longitude" name="entry.1672819827" type="hidden">
+        </div>
+        <button id="submitBook">Submit</button>
+      </form>
+    </div>
+    <div class="body">
+      <div id="map_canvas"></div>
+    </div>
+  </div>
+</body>
+<script src="scripts/map.js"></script>
+</html>
