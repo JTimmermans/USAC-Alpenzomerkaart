@@ -8,9 +8,9 @@ const DATA_SERVICE_URL = "https://spreadsheets.google.com/feeds/list/" + spreads
 let info;
 let map;
 
-function addMarker(aValue) {
-  let lat = parseFloat(aValue.gsx$latitude.$t);
-  let lng = parseFloat(aValue.gsx$longitude.$t);
+function addMarker(avalue) {
+  let lat = parseFloat(avalue.gsx$latitude.$t);
+  let lng = parseFloat(avalue.gsx$longitude.$t);
   let latLng;
   if (!isNaN(lat) && !isNaN(lng)) {
     latLng = new google.maps.LatLng(lat, lng);
@@ -26,17 +26,17 @@ function addMarker(aValue) {
   });
 
   google.maps.event.addListener(marker, 'click', function(){
-      showInfo(marker, aValue);
+      showInfo(marker, avalue);
   });
 
   return marker;
 }
 
-function showInfo(aMarker, aValue){
-  let content = "<h3>"+aValue.gsx$locatie.$t+"</h3>";
-  content += "<p>Wie: "+aValue.gsx$namen.$t+"</p>";
-  content += "<p>Wanneer: "+aValue.gsx$periodestarteneinddatum.$t+"</p>";
-  content += "<p>Wat: "+aValue.gsx$activiteitenwandelensportklimmenalpienetc.$t+"</p>";
+function showInfo(aMarker, avalue){
+  let content = "<h3>"+avalue.gsx$locatie.$t+"</h3>";
+  content += "<p>Wie: "+avalue.gsx$namen.$t+"</p>";
+  content += "<p>Wanneer: "+avalue.gsx$periodestarteneinddatum.$t+"</p>";
+  content += "<p>Wat: "+avalue.gsx$activiteitenwandelensportklimmenalpienetc.$t+"</p>";
   info.setContent(content);
   info.open(map, aMarker);
 }
@@ -89,8 +89,8 @@ function initMap() {
       let markers = [];
       for (var i = 0; i < data.feed.entry.length; i++) {
         let value = data.feed.entry[i];
-        var keys = Object.keys(value)
-        window.alert(keys)
+        //var keys = Object.keys(value)
+        //window.alert(keys)
         markers.push(addMarker(value));
         if (i === data.feed.entry.length - 1) {
           let lat = parseFloat(value.gsx$latitude.$t);
