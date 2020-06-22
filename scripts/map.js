@@ -33,10 +33,10 @@ function addMarker(aValue) {
 }
 
 function showInfo(aMarker, aValue){
-  let content = "<h3>"+aValue.gsx$booktitle.$t+"</h3>";
-  content += "<p>By: "+aValue.gsx$author.$t+"</p>";
-  content += "<p>Setting: "+aValue.gsx$location.$t+"</p>";
-  content += "<p>Reader's name: "+aValue.gsx$yourname.$t+"</p>";
+  let content = "<h3>"+aValue.gsx$locatie.$t+"</h3>";
+  content += "<p>Wie: "+aValue.gsx$namen.$t+"</p>";
+  content += "<p>Wanneer: "+aValue.gsx$periodestarteneinddatum.$t+"</p>";
+  content += "<p>Wat: "+aValue.gsx$activiteitenwandelensportklimmenalpienetc.$t+"</p>";
   info.setContent(content);
   info.open(map, aMarker);
 }
@@ -44,7 +44,7 @@ function showInfo(aMarker, aValue){
 function initMap() {
   info = new google.maps.InfoWindow();
   map = new google.maps.Map(document.getElementById("map_canvas"), {
-    center: new google.maps.LatLng(43.68, -79.39),
+    center: new google.maps.LatLng(46, 9),
     zoom: 6,
     maxZoom: 20,
     mapTypeId: google.maps.MapTypeId.ROADMAP,
@@ -89,6 +89,8 @@ function initMap() {
       let markers = [];
       for (var i = 0; i < data.feed.entry.length; i++) {
         let value = data.feed.entry[i];
+        //var keys = Object.keys(value)
+        //window.alert(keys)
         markers.push(addMarker(value));
         if (i === data.feed.entry.length - 1) {
           let lat = parseFloat(value.gsx$latitude.$t);
